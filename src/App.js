@@ -1,46 +1,37 @@
-import {BrowserRouter as Router, Route, Routes, Link, NavLink} from 'react-router-dom'
+import React from 'react'
+import Home from './Pages/Home'
 import About from './Pages/About'
-import Contact from './Pages/Contact'
-import Inicio from './Pages/Inicio'
-import './App.css';
-
+import {Router, Link, Route, Routes} from 'react-router-dom'
 
 function App() {
+
+
   return(
-    <>
-      <Router>
-        <div className = 'contenedor'>
-          <Link to = '/' className = 'btn btn-dark'>
-            INICIO
-          </Link>
+   <>
+    <Router>
+      <Link to = '/' className = 'btn btn-dark'>
+        INICIO
+      </Link>
 
-          <Link to = '/about' className = 'btn btn-dark'>
-            ABOUT
-          </Link>
+      <Link to = '/about' className = 'btn btn-dark'>
+        ABOUT
+      </Link>
 
-          <NavLink to = '/contact' className = 'btn btn-dark' activeClassName = 'active'>
-            CONTACT
-          </NavLink>
+    <Routes>
+      <Route path = '/about'>
+        <About />
+      </Route>
 
-        </div>
+      <Route path = '/' exact >
+        <Home />
+      </Route>
 
-        <Routes>
-          <Route path = '/contact'>
-            <Contact />
-          </Route>
+    </Routes>
 
-          <Route path = '/about'>
-            <About />
-          </Route>
-
-          <Route path = '/' exact>
-            <Inicio />
-          </Route>
-
-        </Routes>
-        
-      </Router>
-    </>
+    </Router>
+    
+   </>
+  
     )
   }
 
