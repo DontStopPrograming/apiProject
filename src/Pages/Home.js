@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-
 
 function Home() {
 
@@ -13,7 +12,7 @@ const [valor, setValor] = useState([])
 
   
   const apiMostrar = async() => {
-    const data = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await fetch('https://pixabay.com/api/?key=27058290-ee9b8ab8787754e59d4d4e22e&q=cafe&per_page=10')
     const Json = await data.json()
       setValor(Json)
       console.log(Json)
@@ -40,7 +39,7 @@ const [valor, setValor] = useState([])
   const results = !search ? valor : valor.filter(resul => resul.name.toLowerCase().includes(search.toLowerCase()))
 
   return(
-    <>
+    <div>
   <div className="navbar bg-light">
     <div className="container-fluid">
     
@@ -50,22 +49,27 @@ const [valor, setValor] = useState([])
     </div>
   </div>
 
-   
-    <br /><br />
+   <br /><br />
 
-    <ul>
-        { 
+    <div>
+      <ul>
+            { 
         results.map( item => ( 
-           <li key={item.id}> 
+        <li key = {item.id}> 
             <Link to = {`/about/${item.id}`}>
-              {item.name} - {item.email}
+            
+            {item.type} - {item.imageURL}
             </Link>
-           </li>
-       ))
+        </li>
+        ))
         }
-    </ul>
+        </ul>
 
-   </>
+        <h1> ESTE ES EL HOME</h1>
+
+    </div>
+        
+   </div>
   )
     }
 
